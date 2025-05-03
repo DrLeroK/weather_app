@@ -20,7 +20,7 @@ A Django-powered weather application with user authentication and real-time weat
 ## Screenshots
 | ![Login Page](screenshots/home.png) | ![Registration Page](screenshots/footer.png) |
 |--------------------------------------|-----------------------------------------------|
-| *User Login*                         | *New User Registration*                       |
+| *User Home*                         | *New User Footer*                       |
 
 | ![Login Page](screenshots/login.png) | ![Registration Page](screenshots/register.png) |
 |--------------------------------------|-----------------------------------------------|
