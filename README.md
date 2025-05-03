@@ -18,15 +18,15 @@ A Django-powered weather application with user authentication and real-time weat
 - Responsive design
 
 ## Screenshots
-| ![Login Page](screenshots/home.png) | ![Registration Page](screenshots/footer.png) |
+| ![Home Page](screenshots/home.PNG) | ![Footer Page](screenshots/footer.PNG) |
 |--------------------------------------|-----------------------------------------------|
 | *User Home*                         | *New User Footer*                       |
 
-| ![Login Page](screenshots/login.png) | ![Registration Page](screenshots/register.png) |
+| ![Login Page](screenshots/login.PNG) | ![Registration Page](screenshots/register.PNG) |
 |--------------------------------------|-----------------------------------------------|
 | *User Login*                         | *New User Registration*                       |
 
-| ![Search Page](screenshots/search.png) | ![Results Page](screenshots/results.png) |
+| ![Search Page](screenshots/search.PNG) | ![Results Page](screenshots/results.PNG) |
 |----------------------------------------|------------------------------------------|
 | *City Search*                          | *Weather Results*                        |
 
