@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="weather-dashboard">
+    <div class="container">
+        <h1 class="dashboard-title">
+            <i class="bi bi-cloud-sun"></i> Weather Dashboard
+        </h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="search-card">
+                    <form method="GET" class="search-form row g-3 align-items-center">
+                        {% csrf_token %}
+                        <div class="col-md-9">
+                            {% bootstrap_field form.city show_label=False field_class="form-control-lg" %}
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn search-btn w-100">
+                                <i class="bi bi-search me-2"></i> Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+                <!-- Container for errors -->
+                <div class="error-display mb-3">
+                    {% if error %}
+                    <div class="error-message">
+                        <i class="bi bi-exclamation-triangle-fill"></i> {{ error }}
+                    </div>
+                    {% endif %}
+                </div>
+
+
+                
+                <!-- Container for weather results -->
+                <div class="weather-card-container">
+            
+                    {% if weather_data %}
+                    <div class="weather-card">
+                        <div class="weather-header">
+                            <div>
+                                <h2 class="location-title">{{ weather_data.city }}, {{ weather_data.country }}</h2>
+                                <p class="current-date">{{ weather_data.current_date }}</p>
+                            </div>
+                            <div class="text-end">
+                                <div class="current-temp">{{ weather_data.temperature }}°C</div>
+                            </div>
+                        </div>
+                        
+                        <div class="weather-icon-container">
+                            <img src="{{ weather_data.icon }}" alt="Weather Icon" class="weather-icon">
+                        </div>
+                        
+                        <p class="weather-condition">{{ weather_data.weather_condition }} - {{ weather_data.description }}</p>
+                        <p>Feels like {{ weather_data.feels_like }}°C</p>
+                        
+                        <div class="weather-details">
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-thermometer-low"></i></div>
+                                <div class="detail-label">Min Temp</div>
+                                <div class="detail-value">{{ weather_data.temp_min }}°C</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-thermometer-high"></i></div>
+                                <div class="detail-label">Max Temp</div>
+                                <div class="detail-value">{{ weather_data.temp_max }}°C</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-droplet"></i></div>
+                                <div class="detail-label">Humidity</div>
+                                <div class="detail-value">{{ weather_data.humidity }}%</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-speedometer2"></i></div>
+                                <div class="detail-label">Pressure</div>
+                                <div class="detail-value">{{ weather_data.pressure }} hPa</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-wind"></i></div>
+                                <div class="detail-label">Wind Speed</div>
+                                <div class="detail-value">{{ weather_data.wind_speed }} m/s</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-compass"></i></div>
+                                <div class="detail-label">Wind Direction</div>
+                                <div class="detail-value">{{ weather_data.wind_direction }}°</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-eye"></i></div>
+                                <div class="detail-label">Visibility</div>
+                                <div class="detail-value">{{ weather_data.visibility }} km</div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon"><i class="bi bi-cloud"></i></div>
+                                <div class="detail-label">Cloudiness</div>
+                                <div class="detail-value">{{ weather_data.cloudiness }}%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="sun-times">
+                            <div class="sun-time">
+                                <div class="sun-icon"><i class="bi bi-sunrise"></i></div>
+                                <div class="detail-label">Sunrise</div>
+                                <div class="detail-value">{{ weather_data.sunrise }}</div>
+                            </div>
+                            <div class="sun-time">
+                                <div class="sun-icon"><i class="bi bi-sunset"></i></div>
+                                <div class="detail-label">Sunset</div>
+                                <div class="detail-value">{{ weather_data.sunset }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {% elif error %}
+                    <div class="error-message">
+                        <i class="bi bi-exclamation-triangle-fill"></i> {{ error }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

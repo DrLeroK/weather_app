@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="hero-title">Accurate Weather Forecasts for Your Location</h1>
+                <p class="hero-subtitle">Get real-time weather updates, hourly forecasts, and severe weather alerts to plan your day with confidence.</p>
+                
+                <div class="hero-search-container">
+                    <input type="text" class="form-control hero-search-input" placeholder="Enter your city or zip code...">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'app_weather:app_weather' %}?next={{ request.path }}" class="btn hero-search-btn">Search<i class="bi bi-search ms-2"></i></a>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="btn hero-search-btn">Search<i class="bi bi-search ms-2"></i></a>
+                    {% endif %}
+                </div>
+                
+                <div class="d-flex flex-wrap">
+                    <div class="me-4 mb-2">
+                        <span class="badge bg-white text-dark p-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Real-time Data</span>
+                    </div>
+                    <div class="me-4 mb-2">
+                        <span class="badge bg-white text-dark p-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 10-Day Forecast</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="badge bg-white text-dark p-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Global Coverage</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="weather-animation">
+                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_kd5rzej5.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Why Choose WeatherCast?</h2>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <h3 class="feature-title">Real-Time Updates</h3>
+                    <p class="feature-text">Our advanced weather tracking system updates every 5 minutes to give you the most current conditions for your location.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-map"></i>
+                    </div>
+                    <h3 class="feature-title">Interactive Radar</h3>
+                    <p class="feature-text">Track storms with our high-resolution radar maps that show precipitation, temperature, and wind patterns in your area.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-bell-fill"></i>
+                    </div>
+                    <h3 class="feature-title">Severe Alerts</h3>
+                    <p class="feature-text">Get instant notifications for severe weather warnings including thunderstorms, floods, hurricanes, and winter storms.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1580193769210-b8d1c049a7d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Weather monitoring" class="about-img">
+            </div>
+            <div class="col-lg-6 about-content">
+                <h2 class="about-title">About Our Weather Technology</h2>
+                <p class="about-text">WeatherCast combines data from over 20,000 weather stations worldwide with advanced forecasting models powered by artificial intelligence to deliver the most accurate predictions.</p>
+                
+                <ul class="about-list">
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Powered by NOAA and ECMWF data sources</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Machine learning improves forecast accuracy</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Hyper-local predictions down to your neighborhood</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Environmental monitoring for climate trends</span>
+                    </li>
+                </ul>
+                
+                <a href="{% url 'accounts:signup' %}" class="btn btn-primary">Learn More <i class="bi bi-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="cta-section">
+    <div class="container">
+        <i class="bi bi-cloud-sun cta-pattern cta-pattern-1"></i>
+        <i class="bi bi-cloud-rain cta-pattern cta-pattern-2"></i>
+        
+        <h2 class="cta-title">Ready for Accurate Weather Forecasts?</h2>
+        <p class="cta-text">Join over 2 million users who trust WeatherCast for their daily weather updates and severe weather alerts.</p>
+        <button class="btn cta-btn">Get Started - It's Free</button>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+{% block content %}
+<div class="signup-section">
+    <div class="container">
+        <div class="signup-container">
+            <div class="signup-card">
+                <i class="bi bi-cloud-sun weather-icon icon-sun"></i>
+                <i class="bi bi-cloud weather-icon icon-cloud"></i>
+                
+                <h1 class="signup-title">
+                    <i class="bi bi-person-plus"></i> Create Account
+                </h1>
+                
+                <form method="POST" class="signup-form">
+                    {% csrf_token %}
+                    
+                    {% bootstrap_form form %}
+                    
+                    <button type="submit" class="btn signup-btn">
+                        Sign Up <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+                    
+                    <p class="login-link">
+                        Already have an account? <a href="{% url 'accounts:login' %}">Log In</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
